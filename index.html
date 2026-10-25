@@ -129,6 +129,23 @@ footer{background:var(--navy);color:rgba(247,245,238,.7);text-align:center;font-
   .timer b{font-size:48px}
 }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3344380922417618');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3344380922417618&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -361,7 +378,7 @@ var th=document.getElementById("th"),tm=document.getElementById("tm"),ts=documen
 function tick(){var n=new Date(),end=new Date(n);end.setHours(23,59,59,0);if(end<=n)end.setDate(end.getDate()+1);var t=Math.floor((end-n)/1000);th.textContent=String(Math.floor(t/3600)).padStart(2,"0");tm.textContent=String(Math.floor(t%3600/60)).padStart(2,"0");ts.textContent=String(t%60).padStart(2,"0");if(t%60===0)setH()}
 tick();setInterval(tick,1000);
 
-document.querySelectorAll("a.checkout").forEach(function(a){a.addEventListener("click",function(ev){var d=a.getAttribute("href");if(!/^https?:\/\//i.test(d))return;ev.preventDefault();if(typeof window.redirectWithParams==="function"){window.redirectWithParams(d);return}var q=location.search;location.href=q?(d.indexOf("?")>-1?d+"&"+q.slice(1):d+q):d})});
+document.querySelectorAll("a.checkout").forEach(function(a){a.addEventListener("click",function(ev){var d=a.getAttribute("href");if(!/^https?:\/\//i.test(d))return;ev.preventDefault();try{fbq("track","InitiateCheckout",{value:/C3BA03F69/.test(d)?19.9:37,currency:"BRL"})}catch(_){}if(typeof window.redirectWithParams==="function"){window.redirectWithParams(d);return}var q=location.search;location.href=q?(d.indexOf("?")>-1?d+"&"+q.slice(1):d+q):d})});
 })();
 </script>
 </body>
